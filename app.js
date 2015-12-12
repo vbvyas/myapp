@@ -6,6 +6,17 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 
+app.get('/test/:name', function (req, res) {
+  var name = req.params.name;
+  var query = req.query;
+  var obj = { name: name, query: query };
+  if (name && query) {
+    res.send(obj);
+  } else {
+    res.send('Hello World!');
+  }
+});
+
 app.get('/test', function (req, res) {
   var url = 'https://maps.google.com/maps/api/geocode/json?address=seattle';
   request(url, function (err, result, obj) {
